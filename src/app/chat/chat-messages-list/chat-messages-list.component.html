@@ -1,0 +1,37 @@
+<div class="messages d-flex flex-column-reverse w-100">
+    <ng-container *ngFor="let msg of messages">
+        <div class="messages__item p-3">
+            <div
+                class="small text-muted"
+                [ngClass]="{ 'text-right': msg.sender === 'John Doe' }"
+            >
+                {{ msg.sender }}
+                &middot;
+                {{ msg.timestamp | date: 'medium' }}
+            </div>
+            <div
+                class="d-flex"
+                [ngClass]="{
+                    'justify-content-end': msg.sender === 'John Doe',
+                    'justify-content-start': msg.sender !== 'John Doe'
+                }"
+            >
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{ msg.message }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="messages.length === 0">
+        <div class="p-3 text-center messages__item">
+            <div class="alert alert-info mb-0">
+                No messages yet!
+            </div>
+        </div>
+    </ng-container>
+</div>

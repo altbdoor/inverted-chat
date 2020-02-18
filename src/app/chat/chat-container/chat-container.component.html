@@ -1,0 +1,38 @@
+<div class="container py-3 w-100 h-100">
+    <div class="card d-flex h-100">
+        <div class="flex-grow-1 overflow-hidden">
+            <app-chat-messages-list
+                [messages]="messages$ | async"
+            ></app-chat-messages-list>
+        </div>
+        <div class="border-top">
+            <form
+                class="card-body"
+                [formGroup]="form"
+                (submit)="submitText(form)"
+            >
+                <div class="input-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        formControlName="text"
+                    />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">
+                            Send message
+                        </button>
+                    </div>
+                    <div class="input-group-append">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            (click)="getFakeResponse()"
+                        >
+                            Get fake reply
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
